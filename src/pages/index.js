@@ -17,10 +17,26 @@ export default function Home() {
     }
 
     return (
-        <div>
-          <input type="text" value={filter} onChange={handleFilterChange} className=""/>
-            {stations.map(station => <Link className="custom-link" href={`/stations/${station.id}`} key={station.id}>{station.name}</Link>
-            )}
-        </div>
-    );
+      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+          <h1>Zoek hier uw station</h1>
+          <div className="input-container">
+              <input 
+                  type="text" 
+                  value={filter} 
+                  onChange={handleFilterChange} 
+                  className="input-field"
+              />
+          </div>
+          {stations.map(station => (
+              <Link 
+                  className="custom-link" 
+                  href={`/stations/${station.id}`} 
+                  key={station.id}
+                  style={{ display: 'block', marginTop: '10px' }}
+              >
+                  {station.name}
+              </Link>
+          ))}
+      </div>
+  );
 }
