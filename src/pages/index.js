@@ -1,4 +1,4 @@
-import styles from '@/styles/Home.module.css'
+import styles from '@/styles/Home.module.css';
 import { useState } from 'react';
 import useNetwork from '@/data/network';
 import Link from 'next/link';
@@ -18,8 +18,8 @@ export default function Home() {
 
     return (
         <div>
-          <input type="text" value={filter} onChange={handleFilterChange}/>
-            {stations.map(station => <Link href={`/stations/${station.id}`} key={station.id}>{station.name}</Link>
+          <input type="text" value={filter} onChange={handleFilterChange} className=""/>
+            {stations.map(station => <Link className="custom-link" href={`/stations/${station.id}`} key={station.id}>{station.name}</Link>
             )}
         </div>
     );
