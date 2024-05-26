@@ -19,7 +19,7 @@
   font-size: var(--header-font-size);
   font-family: 'Montserrat', sans-serif;
   font-weight: normal;
-  color: rgb(0, 0, 0);
+  color: rgb(42, 42, 42);
   margin-bottom: 20px;
 }
 
@@ -32,24 +32,45 @@
   font-size: 16px;
   width: 100%;
   max-width: 250px;
+  background-color: rgba(230, 231, 226, 1);
+  border-radius: 50px;
+  border-color: rgba(155, 95, 59, 1);
 }
 
 .results {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-left: 20px;
+  font-size: 13px;
 }
 
+.stationContainer {
+  margin-bottom: 10px;
+}
 
 .customLink {
   display: block;
   margin: 10px 0;
-  font-size: 18px;
-  color: blue;
+  font-size: 13px;
+  color: rgba(155, 95, 59, 1);
   text-decoration: none;
 }
 
 .customLink:hover {
   text-decoration: underline;
+}
+
+.stationInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: right;
+}
+
+.freeBikes {
+  margin-left: 50px;
+  text-align: right;
 }
