@@ -14,7 +14,7 @@ export default function Navbar() {
         <nav className={styles.navbar}>
             <div className={styles.logo}>
                 <Link href="/">
-                  <Image src="/favicon.ico" alt="Logo" width={50} height={50} />
+                  <Image src="/Velo-Antwerpen-01.png" alt="Logo" width={200} height={30} />
                 </Link>
             </div>
             <div className={`${styles.hamburger} ${menuOpen ? styles.cross : ''}`} onClick={toggleMenu}>
