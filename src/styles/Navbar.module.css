@@ -7,12 +7,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff;
+    background-color: rgba(182, 136, 120, 1);
     z-index: 1000;
 }
 
 .logo img {
-    height: 40px;
+    height: 30px;
+    padding-top: 10px;
 }
 
 .hamburger {
@@ -28,7 +29,7 @@
 .line {
     width: 20%;
     height: 5px;
-    background-color: #212121;
+    background-color: rgba(230, 231, 226, 1);
     transition: all 0.3s ease;
 }
 
@@ -36,7 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff;
+    background-color: rgba(230, 231, 226, 1);
     position: absolute;
     padding: 10px 20px;
     padding-top: 50px;

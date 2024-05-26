@@ -34,7 +34,7 @@ export default function Home() {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
-                <Image src="/Velo-Antwerpen-01.png" alt="Logo" width={300} height={60} className={styles.logo} />
+                <Image src="/Velo-Antwerpen-02.png" alt="Logo" width={300} height={50} className={styles.logo} />
                 <h1 className={styles.hoofd}>Zoek hier uw station</h1>
                 <div className={styles.inputContainer}>
                     <input 
