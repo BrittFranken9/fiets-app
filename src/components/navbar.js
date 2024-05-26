@@ -10,10 +10,16 @@ export default function Navbar() {
         setMenuOpen(!menuOpen);
     };
 
+    const closeMenu = () => {
+        setMenuOpen(false);
+    };
+
     return (
         <nav className={styles.navbar}>
             <div className={styles.logo}>
-                <Image src="/favicon.ico" alt="Logo" width={50} height={50} />
+                <Link href="/" onClick={closeMenu}>
+                  <Image src="/favicon.ico" alt="Logo" width={50} height={50} />
+                </Link>
             </div>
             <div className={styles.hamburger} onClick={toggleMenu}>
                 <div className={styles.line}></div>
@@ -21,10 +27,10 @@ export default function Navbar() {
                 <div className={styles.line}></div>
             </div>
             <div className={`${styles.menu} ${menuOpen ? styles.menuOpen : ''}`}>
-                <Link href="/">Home</Link>
-                <Link href="/about">About</Link>
-                <Link href="/services">Services</Link>
-                <Link href="/contact">Contact</Link>
+                <Link href="/" onClick={closeMenu}>Home</Link>
+                <Link href="/about" onClick={closeMenu}>About</Link>
+                <Link href="/services" onClick={closeMenu}>Services</Link>
+                <Link href="/contact" onClick={closeMenu}>Contact</Link>
             </div>
         </nav>
     );

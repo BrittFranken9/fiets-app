@@ -7,7 +7,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100; /* Verhoogd z-index om bovenop andere elementen te staan */
+    z-index: 1000; /* Verhoogd z-index om bovenop andere elementen te staan */
 }
 
 .logo img {
@@ -19,10 +19,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: fixed;
     width: 30px;
     height: 21px;
     cursor: pointer;
     z-index: 1000; /* Verhoogd z-index om bovenop andere elementen te staan */
+    top: 20px; /* Afstand vanaf de bovenkant aanpassen */
+    right: 20px; /* Afstand vanaf de rechterkant aanpassen */
 }
 
 .line {
@@ -34,13 +37,14 @@
 .menu {
     display: none;
     flex-direction: column;
-    align-items: center;
-    background-color: #ffffff;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    border-radius: 8px;
-    overflow: hidden;
+    align-items: flex-start; /* Links uitlijnen */
+    background-color: rgba(255, 255, 255, 0.9); /* Licht doorschijnende achtergrond */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    padding-top: 100px; /* Ruimte bovenaan voor de navbar */
     z-index: 999;
 }
 
@@ -49,16 +53,16 @@
 }
 
 .menu a {
-    color: rgb(229, 189, 48);
-    padding: 10px 20px;
+    color: #000; /* Zwart */
+    padding: 20px;
     text-decoration: none;
     display: block;
     width: 100%;
-    text-align: center;
+    text-align: left; /* Links uitlijnen */
 }
 
 .menu a:hover {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.7); /* Lichtere achtergrond bij hover */
 }
 
 @media (min-width: 768px) {
@@ -67,6 +71,8 @@
         position: static;
         flex-direction: row;
         background-color: transparent;
+        height: auto;
+        padding-top: 0;
     }
     .menuOpen {
         display: flex;
