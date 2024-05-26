@@ -17,7 +17,7 @@ export default function Home() {
     }
 
     return (
-      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+      <div style={{ textAlign: 'center', marginTop: '20px' }} className={styles.background}>
           <h1>Zoek hier uw station</h1>
           <div className="input-container">
               <input 
