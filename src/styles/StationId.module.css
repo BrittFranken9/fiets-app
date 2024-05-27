@@ -1,0 +1,18 @@
+.stationDetail{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.hoofd {
+    font-size: var(--header-font-size);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    color: rgb(42, 42, 42);
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 300px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
