@@ -1,3 +1,43 @@
 .footer {
     background-color: rgba(155, 95, 59, 1);
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 2px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+  }
+  
+  #__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .container {
+    flex: 1;
+  }
+  
+  .footerLink {
+    display: block;
+    margin: 0 10px;
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+  
+  .footerContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+
+  .footerLocatie{
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
   }

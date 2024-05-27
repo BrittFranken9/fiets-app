@@ -1,10 +1,13 @@
 .container {
+  flex: 1;
   display: flex;
+  
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
   padding-top: 20px;
 }
+
 
 .content {
   text-align: center;
