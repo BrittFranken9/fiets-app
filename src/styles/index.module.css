@@ -1,0 +1,27 @@
+.centerContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.homeButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #495563;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.homeButton:hover {
+    background-color: #005bb5;
+}
+
+.afbeelding {
+    max-width: 300px;
+    margin-bottom: 20px;
+}

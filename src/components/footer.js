@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div>
         <p className={styles.footerLocatie}>Locaties</p>
-        <Image src="/Velo-Antwerpen-01.png" alt="Logo" width={300} height={50}/>
+        <Image src="/Velo-Antwerpen-01.png" alt="Logo" width={300} height={50} className={styles.logo}/>
       </div>
       <div className={styles.footerContent}>
         <p>© {new Date().getFullYear()} Velo Antwerpen  -</p>

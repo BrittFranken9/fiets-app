@@ -12,4 +12,6 @@ body, html {
   background-color: var(--background-color);
   font-family: var(--font-family);
   overflow-x: hidden;
+  margin: 0;
 }
+

@@ -13,7 +13,7 @@ export default function Navbar() {
     return (
         <nav className={styles.navbar}>
             <div className={styles.logo}>
-                <Link href="/">
+                <Link href="/home">
                   <Image src="/favicon.ico" alt="Logo" width={50} height={0} />
                 </Link>
             </div>
@@ -23,7 +23,7 @@ export default function Navbar() {
                 <div className={styles.line}></div>
             </div>
             <div className={`${styles.menu} ${menuOpen ? styles.menuOpen : ''}`}>
-                <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
+                <Link href="/home" onClick={() => setMenuOpen(false)}>Home</Link>
                 <Link href="/about" onClick={() => setMenuOpen(false)}>About</Link>
                 <Link href="/services" onClick={() => setMenuOpen(false)}>Services</Link>
                 <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>

@@ -12,11 +12,15 @@ export default function StationDetail() {
 
   const station = network.stations.find(station => station.id === router.query.stationId);
 
+  function removeLeadingDigits(name) {
+    return name.replace(/^\d+\s*-\s*/, '');
+  }
+
   return (
-        <div className={styles.stationDetail}>
-            <Image src="/Velo-Antwerpen-02.png" alt="Logo" width={300} height={50} className={styles.logo} />
-        <h1 className={styles.hoofd}>{station.name}</h1>
-        <p>{station.free_bikes} bikes available</p>
-      </div>
+    <div className={styles.stationDetail}>
+      <Image src="/Velo-Antwerpen-02.png" alt="Logo" width={300} height={50} className={styles.logo} />
+      <h1 className={styles.hoofd}>{removeLeadingDigits(station.name)}</h1>
+      <p>{station.free_bikes} bikes available</p>
+    </div>
   );
 }

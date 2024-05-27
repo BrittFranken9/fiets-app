@@ -20,7 +20,7 @@
   
   .footerLink {
     display: block;
-    margin: 0 10px;
+    margin: 0 0px;
     font-size: 13px;
     color: rgb(255, 255, 255);
     text-decoration: none;
@@ -41,3 +41,10 @@
     color: rgb(255, 255, 255);
     text-decoration: none;
   }
+
+
+  .logo {
+    max-width: 300px;
+    margin-bottom: 0px;
+    padding-top: 5px;
+}  
