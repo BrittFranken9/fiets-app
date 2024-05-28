@@ -1,18 +1,29 @@
+import { useState } from 'react';
+import styles from '@/styles/footer.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '@/styles/footer.module.css';
 
 export default function Footer() {
+  const [activeIcon, setActiveIcon] = useState(null);
+
+  const handleIconClick = (iconName) => {
+    setActiveIcon(iconName);
+  };
+
   return (
     <footer className={styles.footer}>
-      <div>
-        <p className={styles.footerLocatie}>Locaties</p>
-        <Image src="/Velo-Antwerpen-01.png" alt="Logo" width={300} height={50} className={styles.logo}/>
-      </div>
       <div className={styles.footerContent}>
-        <p>© {new Date().getFullYear()} Velo Antwerpen  -</p>
-        <Link href="https://www.BRITTvisualdesign.be" className={styles.footerLink}>
-          BRITTvisualdesign
+        <Link href="/home" passHref className={`${styles.footerLink} ${activeIcon === 'home' && styles.active}`} onClick={() => handleIconClick('home')}>
+          <Image src="/home.svg" alt="Home" className={styles.footerIcon} width={300} height={40}/>
+        </Link>
+        <Link href="/zoeken" passHref className={`${styles.footerLink} ${activeIcon === 'search' && styles.active}`} onClick={() => handleIconClick('search')}>
+          <Image src="/search.svg" alt="Search" className={styles.footerIcon} width={300} height={40}/>
+        </Link>
+        <Link href="/favorites" passHref className={`${styles.footerLink} ${activeIcon === 'favorites' && styles.active}`} onClick={() => handleIconClick('favorites')}>
+          <Image src="/favorites.svg" alt="Favorites" className={styles.footerIcon} width={300} height={40}/>
+        </Link>
+        <Link href="/map" passHref className={`${styles.footerLink} ${activeIcon === 'map' && styles.active}`} onClick={() => handleIconClick('map')}>
+          <Image src="/map.svg" alt="Map" className={styles.footerIconMap} width={300} height={40}/>
         </Link>
       </div>
     </footer>
