@@ -7,13 +7,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1d1d1d;
     z-index: 1000;
 }
 
 .logo img {
     height: 30px;
     padding-top: 10px;
+}
+
+.hamburgerMenuWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.extraLink {
+    margin-right: 8px;
+    margin-top: 2px;
 }
 
 .hamburger {
@@ -64,8 +73,8 @@
 }
 
 .menuOpen {
-    width: 100vw; /* Breedte van het menu wanneer open */
-    opacity: 1; /* Weergave van het menu wanneer open */
+    width: 100vw; /* Width of the menu when open */
+    opacity: 1; /* Visibility of the menu when open */
 }
 
 .cross .line:nth-child(1) {
