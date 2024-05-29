@@ -95,22 +95,15 @@ export default function Home() {
     return name.replace(/^\d+\s*-\s*/, '');
   };
 
-
-  const sortedStations = network.stations.slice().sort((a, b) => {
-    const aFavorite = favorites[a.id] || false;
-    const bFavorite = favorites[b.id] || false;
-    if (aFavorite && !bFavorite) return -1;
-    if (!aFavorite && bFavorite) return 1;
-    return 0;
-  });
-
   return (
     <div>
       <div className={styles.container}>
-        {sortedStations.map((station, index) => (
+        {network && network.stations && network.stations.map((station, index) => (
           <div key={station.id} className={styles.stationContainer}>
             <div className={styles.mapContainer}>
-              <div id={`map-${station.id}`} className={styles.map}></div>
+              <a href={`https://www.google.com/maps/dir/?api=1&destination=${station.latitude},${station.longitude}`} target="_blank" rel="noopener noreferrer">
+                <div id={`map-${station.id}`} className={styles.map}></div>
+              </a>
             </div>
             <div className={styles.stationDetails}>
               <div className={styles.stationName}>
