@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import useNetwork from '@/data/network';
 import styles from '@/styles/About.module.css';
+import Link from 'next/link'; // Importeer Link uit next/link
 
 export default function About() {
   const { network, isLoading, isError } = useNetwork();
@@ -31,7 +32,9 @@ export default function About() {
           <li key={station.id} className={styles.stationItem}>
             <div className={styles.stationInfo}>
               <div className={styles.stationHeader}>
-                <h2 className={styles.stationName}>{station.name.replace(/^\d+\s*-\s*/, '')}</h2>
+                <Link href={`/stations/${station.id}`} className={styles.stationName}>
+                  {station.name.replace(/^\d+\s*-\s*/, '')}
+                </Link>
                 <div className={styles.removeButton} onClick={() => removeFavorite(station.id)}>✖</div>
               </div>
               <div className={styles.stationDetails}>
