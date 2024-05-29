@@ -11,40 +11,48 @@
 .contentContainer {
     position: absolute;
     bottom: 20px;
-    left: 28px;
+    left: 0px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .homeButton {
     padding: 10px 20px;
     font-size: 14px;
-    background-color: #49556300;
-    border-color: white;
+    background-color: #fd7014;
+    border-color: #fd7014;
     border-width: 2px;
-    color: white;
-    border-radius: 50px;
+    color: #eeeeee;
+    border-radius: 10px;
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 20px;
+    padding-left: 88px;
+    padding-right: 88px;
+    font-family:'verdana';
+    font-weight: lighter;
 }
 
 .homeButton:hover {
-    background-color: #ffffff;
-    color: #1d1d1d;
+    background-color: #eeeeee;
+    color: #222831;
 }
 
 .logo {
-    max-width: 300px;
-    margin-bottom: 2px;
+    max-width: 240px;
+    margin-bottom: 4px;
 }
 
 .text {
-    font-family: 'Montserrat', sans-serif;
+    font-family:'verdana';
     font-weight: lighter;
     font-size: 14px;
     color: white;
     margin-bottom: 15px;
-    margin-right: 80px;
+    margin-right: 24px;
+    margin-left: 24px;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 80px;
 }

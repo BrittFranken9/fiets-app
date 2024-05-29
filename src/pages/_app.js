@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import Layout from '@/components/Layout'
+import Layout2 from '@/components/Layout2'
 import { useRouter } from 'next/router'
 
 export default function App({ Component, pageProps }) {
@@ -11,6 +12,18 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
     )
   }
+
+  if (router.pathname === '/zoeken') {
+
+    return (
+      <>
+      <Layout2>
+        <Component {...pageProps} />
+      </Layout2>
+      </>
+    )
+  }
+
   return (
     <Layout>
       <Component {...pageProps} />

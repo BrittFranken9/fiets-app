@@ -39,3 +39,7 @@
   height: auto;
   max-height: 30px;
 }
+
+.active {
+  fill: orange; /* Pas de gewenste kleur toe op de SVG */
+}

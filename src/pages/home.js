@@ -135,6 +135,71 @@ export default function Home() {
           {/* Add your extra info content here */}
           <p>Extra Info Box 3</p>
         </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+        
       </div>
     </div>
   );
