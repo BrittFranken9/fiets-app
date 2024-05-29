@@ -30,7 +30,7 @@ export default function About() {
           }),
         ],
         target: mapRef.current,
-        controls: [], // Remove all default controls
+        controls: [],
       });
 
       const features = network.stations.map(station => {
@@ -61,7 +61,7 @@ export default function About() {
 
       map.addLayer(vectorLayer);
 
-      return () => map.setTarget(null); // Clean up the map when component unmounts
+      return () => map.setTarget(null);
     }
   }, [network, isLoading, isError]);
 

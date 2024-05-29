@@ -7,7 +7,6 @@ export default function About() {
   const [favorites, setFavorites] = useState({});
 
   useEffect(() => {
-    // Retrieve favorites from local storage when component mounts
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
     setFavorites(storedFavorites);
   }, []);
@@ -22,7 +21,6 @@ export default function About() {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error</div>;
 
-  // Filter favorite stations from network data
   const favoriteStations = network.stations.filter((station) => favorites[station.id]);
 
   return (

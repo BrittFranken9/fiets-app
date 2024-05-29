@@ -20,9 +20,9 @@
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
-    width: 20px; /* Aanpassen zoals nodig */
-    height: 20px; /* Aanpassen zoals nodig */
-    opacity: 0.7; /* Opacity aanpassen als gewenst */
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
 }
 
 .inputField {
@@ -40,21 +40,21 @@
 .resultsContainer {
     width: 100%;
     max-width: 800px;
-    margin-top: 50px; /* Extra ruimte bovenaan */
+    margin-top: 50px;
 }
 
 .stationContainer {
-    padding: 15px; /* Grotere padding voor de resultaten */
-    border-bottom: 1px solid #dbdbdb; /* Grijze onderstreping */
+    padding: 15px;
+    border-bottom: 1px solid #dbdbdb;
 }
 
 .stationContainer:last-child {
-    border-bottom: none; /* Geen onderstreping voor het laatste resultaat */
+    border-bottom: none;
 }
 
 .customLink {
     display: block;
-    color: #eeeeee; /* Donkere tekstkleur */
+    color: #eeeeee;
     text-decoration: none;
     font-size: 16px;
 }
@@ -70,6 +70,6 @@
 }
 
 .freeBikes {
-    font-weight: bold; /* Vetgedrukte tekst voor vrije fietsen */
-    color: #fd7014; /* Donkere tekstkleur */
+    font-weight: bold;
+    color: #fd7014;
 }

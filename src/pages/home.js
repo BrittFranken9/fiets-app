@@ -23,7 +23,6 @@ export default function Home() {
   const [favorites, setFavorites] = useState({});
 
   useEffect(() => {
-    // Retrieve favorites from local storage when component mounts
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
     setFavorites(storedFavorites);
   }, []);
@@ -96,7 +95,7 @@ export default function Home() {
     return name.replace(/^\d+\s*-\s*/, '');
   };
 
-  // Sort stations based on favorites before rendering
+
   const sortedStations = network.stations.slice().sort((a, b) => {
     const aFavorite = favorites[a.id] || false;
     const bFavorite = favorites[b.id] || false;

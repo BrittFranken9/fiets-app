@@ -16,7 +16,7 @@
 .footerLink {
   margin: 0 30px;
   text-decoration: none;
-  transition: font-weight 0.3s ease, color 0.3s ease; /* Transition effect for font-weight and color */
+  transition: font-weight 0.3s ease, color 0.3s ease;
 }
 
 .footerLink:hover {
@@ -25,7 +25,7 @@
 
 .footerLink.active {
   font-weight: bold;
-  color: orange; /* Active link color */
+  color: orange;
 }
 
 .footerIcon {
@@ -35,11 +35,11 @@
 }
 
 .footerIconMap {
-  width: 15px; /* Adjust the width as needed */
+  width: 15px;
   height: auto;
   max-height: 30px;
 }
 
 .active {
-  fill: orange; /* Pas de gewenste kleur toe op de SVG */
+  fill: orange;
 }
