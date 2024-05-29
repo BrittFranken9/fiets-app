@@ -14,6 +14,7 @@ import { Style, Icon } from 'ol/style.js';
 import Image from 'next/image';
 import 'ol/ol.css';
 import { useRouter } from 'next/router';
+import { defaults as defaultInteractions, DragPan, MouseWheelZoom } from 'ol/interaction';
 
 export default function Home() {
   const { network, isLoading, isError } = useNetwork();
@@ -50,6 +51,17 @@ export default function Home() {
           ],
           target: `map-${station.id}`,
           controls: [],
+          interactions: defaultInteractions({
+            dragPan: false, // Schakel slepen uit
+            mouseWheelZoom: false, // Schakel zoomen met muiswiel uit
+          }).extend([
+            // Voeg alleen muisbeweging toe
+            new DragPan({
+              condition: function (event) {
+                return event.originalEvent.altKey;
+              },
+            }),
+          ]),
         });
 
         const marker = new Feature({
