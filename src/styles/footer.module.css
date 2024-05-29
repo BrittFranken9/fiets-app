@@ -1,16 +1,22 @@
 .footer {
   position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #1d1d1d;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  background-color: #393e46;
   text-align: center;
   padding: 10px 0;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 .footerLink {
   margin: 0 30px;
   text-decoration: none;
-  transition: font-weight 0.3s ease; /* Transition effect for font-weight */
+  transition: font-weight 0.3s ease, color 0.3s ease; /* Transition effect for font-weight and color */
 }
 
 .footerLink:hover {
@@ -19,16 +25,17 @@
 
 .footerLink.active {
   font-weight: bold;
+  color: orange; /* Active link color */
 }
 
 .footerIcon {
-  width: 30px; /* Adjust the width as needed */
+  width: 20px;
   height: auto;
-  max-height: 35px; /* Ensures all icons have a maximum height */
+  max-height: 35px;
 }
 
 .footerIconMap {
-  width: 30px; /* Adjust the width as needed */
+  width: 15px; /* Adjust the width as needed */
   height: auto;
   max-height: 30px;
 }
