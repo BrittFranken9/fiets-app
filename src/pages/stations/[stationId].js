@@ -18,7 +18,7 @@ export default function StationDetail() {
 
   return (
     <div className={styles.stationDetail}>
-      <Image src="/Velo-Antwerpen-02.png" alt="Logo" width={300} height={50} className={styles.logo} />
+      <Image src="/Velo-Antwerpen-01.svg" alt="Logo" width={300} height={50} className={styles.logo} />
       <h1 className={styles.hoofd}>{removeLeadingDigits(station.name)}</h1>
       <p>{station.free_bikes} bikes available</p>
     </div>

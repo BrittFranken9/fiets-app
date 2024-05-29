@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import useNetwork from '@/data/network';
+import styles from '@/styles/About.module.css';
 
 export default function About() {
   const { network, isLoading, isError } = useNetwork();
@@ -11,6 +12,13 @@ export default function About() {
     setFavorites(storedFavorites);
   }, []);
 
+  const removeFavorite = (stationId) => {
+    const updatedFavorites = { ...favorites };
+    delete updatedFavorites[stationId];
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  };
+
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error</div>;
 
@@ -19,11 +27,21 @@ export default function About() {
 
   return (
     <div>
-      <h1>About {network.name}</h1>
-      <h2>Favorite Stations</h2>
-      <ul>
+      <h1 className={styles.whiteTitle}>Favoriete stations</h1>
+      <ul className={styles.stationList}>
         {favoriteStations.map((station) => (
-          <li key={station.id}>{station.name}</li>
+          <li key={station.id} className={styles.stationItem}>
+            <div className={styles.stationInfo}>
+              <div className={styles.stationHeader}>
+                <h2 className={styles.stationName}>{station.name.replace(/^\d+\s*-\s*/, '')}</h2>
+                <div className={styles.removeButton} onClick={() => removeFavorite(station.id)}>✖</div>
+              </div>
+              <div className={styles.stationDetails}>
+                <span>Beschikbare fietsen: {station.free_bikes}</span>
+                <span>Lege plaatsen: {station.empty_slots}</span>
+              </div>
+            </div>
+          </li>
         ))}
       </ul>
     </div>

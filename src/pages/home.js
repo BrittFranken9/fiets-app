@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import useNetwork from '@/data/network';
 import styles from '@/styles/Home.module.css';
@@ -97,10 +96,19 @@ export default function Home() {
     return name.replace(/^\d+\s*-\s*/, '');
   };
 
+  // Sort stations based on favorites before rendering
+  const sortedStations = network.stations.slice().sort((a, b) => {
+    const aFavorite = favorites[a.id] || false;
+    const bFavorite = favorites[b.id] || false;
+    if (aFavorite && !bFavorite) return -1;
+    if (!aFavorite && bFavorite) return 1;
+    return 0;
+  });
+
   return (
     <div>
       <div className={styles.container}>
-        {network && network.stations && network.stations.map((station, index) => (
+        {sortedStations.map((station, index) => (
           <div key={station.id} className={styles.stationContainer}>
             <div className={styles.mapContainer}>
               <div id={`map-${station.id}`} className={styles.map}></div>
