@@ -74,40 +74,60 @@ export default function Home() {
     }));
   };
 
-  if (isLoading) return <div>loading ...</div>;
-  if (isError) return <div>error</div>;
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error</div>;
 
   const formatStationName = (name) => {
     return name.replace(/^\d+\s*-\s*/, '');
   };
 
   return (
-    <div className={styles.container}>
-      {network.stations.map((station, index) => (
-        <div key={index} className={styles.stationContainer}>
-          <div className={styles.mapContainer}>
-            <div id={`map-${index}`} className={styles.map}></div>
-          </div>
-          <div className={styles.stationDetails}>
-            <div className={styles.stationName}>
-              <a href={`/stations/${station.id}`} className={styles.stationLink}>
-                {formatStationName(station.name)}
-              </a>
+    <div>
+      <div className={styles.container}>
+        {network.stations.map((station, index) => (
+          <div key={index} className={styles.stationContainer}>
+            <div className={styles.mapContainer}>
+              <div id={`map-${index}`} className={styles.map}></div>
             </div>
-            <div className={styles.availableBikes}>
-              <Image
-                src={favorites[index] ? '/favorites-filled.svg' : '/favorites.svg'}
-                alt="favorite"
-                className={styles.heartIcon}
-                onClick={() => toggleFavorite(index)}
-                width={24}
-                height={24}
-              />
-              {station.free_bikes}
+            <div className={styles.stationDetails}>
+              <div className={styles.stationName}>
+                <a href={`/stations/${station.id}`} className={styles.stationLink}>
+                  {formatStationName(station.name)}
+                </a>
+              </div>
+              <div className={styles.availableBikes}>
+                <Image
+                  src={favorites[index] ? '/favorites-filled.svg' : '/favorites.svg'}
+                  alt="favorite"
+                  className={styles.heartIcon}
+                  onClick={() => toggleFavorite(index)}
+                  width={24}
+                  height={24}
+                />
+                <span className={styles.bikeCount}>
+                  {station.free_bikes}
+                  <Image src="/fiets.svg" alt="bike" width={20} height={17} className={styles.bikeIcon}/>
+                </span>
+              </div>
             </div>
           </div>
+        ))}
+      </div>
+      <div className={styles.extraInfoContainer}>
+        <h2 className={styles.title}>Extra Information</h2>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 1</p>
         </div>
-      ))}
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 2</p>
+        </div>
+        <div className={styles.extraInfoBox}>
+          {/* Add your extra info content here */}
+          <p>Extra Info Box 3</p>
+        </div>
+      </div>
     </div>
   );
 }

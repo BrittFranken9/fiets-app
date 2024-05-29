@@ -1,14 +1,21 @@
-.container {
+.containerWrapper {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
-    width: calc(35vw * 3 + 40px); /* Breedte van 3 stations met marges */
-    overflow-x: auto; /* Horizontaal scrollen inschakelen */
+    padding: 20px;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
   }
   
   .stationContainer {
+    flex: 0 0 auto; /* Ensures the flex items don't shrink */
     width: 35vw;
-    height: 30vh;
+    height: 25vh;
     background-color: white;
     border-radius: 20px;
     position: relative;
@@ -52,21 +59,47 @@
   
   .heartIcon {
     cursor: pointer;
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     margin-right: 8px;
   }
   
-  .star {
-    color: gold;
-  }
-
-
   .stationLink {
     text-align: left;
-    color: #222831;;
+    color: #222831;
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
     font-size: 14px;
     text-decoration: none;
+  }
+  
+  .bikeCount {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+  }
+  
+  .bikeIcon {
+    margin-left: 4px;
+  }
+  
+  .title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    color: #222831;
+    margin-bottom: 10px;
+  }
+  
+  .extraInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .infoBox {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
