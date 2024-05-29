@@ -12,10 +12,13 @@ import { Vector as VectorLayer } from 'ol/layer';
 import { Vector as VectorSource } from 'ol/source';
 import { Style, Icon } from 'ol/style';
 import 'ol/ol.css';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function About() {
   const { network, isLoading, isError } = useNetwork();
   const mapRef = useRef();
+  const router = useRouter();
 
   useEffect(() => {
     if (!isLoading && !isError && network && network.stations) {
@@ -36,6 +39,7 @@ export default function About() {
       const features = network.stations.map(station => {
         const marker = new Feature({
           geometry: new Point(fromLonLat([station.longitude, station.latitude])),
+          stationId: station.id,
         });
 
         marker.setStyle(
@@ -61,9 +65,19 @@ export default function About() {
 
       map.addLayer(vectorLayer);
 
+      map.on('click', function (event) {
+        map.forEachFeatureAtPixel(event.pixel, function (feature) {
+          if (feature && feature.get('stationId')) {
+            const stationId = feature.get('stationId');
+            router.push(`/stations/${stationId}`);
+          }
+        });
+      });
+
       return () => map.setTarget(null);
     }
-  }, [network, isLoading, isError]);
+ 
+  }, [network, isLoading, isError, router]);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error</div>;

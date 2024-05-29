@@ -23,7 +23,9 @@ export default function StationDetail() {
 
   useEffect(() => {
     if (!isLoading && !isError && network && network.stations && network.stations.length > 0) {
-      const station = network.stations[0];
+      const station = network.stations.find(station => station.id === router.query.stationId);
+      if (!station) return;
+
       const map = new Map({
         view: new View({
           center: fromLonLat([station.longitude, station.latitude]),
@@ -69,14 +71,15 @@ export default function StationDetail() {
         markerRef.current = null;
       };
     }
-  }, [network, isLoading, isError]);
+  }, [network, isLoading, isError, router.query.stationId]);
 
-
-  
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error</div>;
 
+  if (!router.query.stationId || !network) return <div>No station ID or network data</div>;
+
   const station = network.stations.find(station => station.id === router.query.stationId);
+  if (!station) return <div>Station not found</div>;
 
   function removeLeadingDigits(name) {
     return name.replace(/^\d+\s*-\s*/, '');
@@ -88,7 +91,21 @@ export default function StationDetail() {
       <div className={styles['map-container']}>
         <div ref={mapRef} className={styles.map}></div>
       </div>
-      <p>{station.free_bikes} bikes available</p>
+      <div className={styles.infoContainer}>
+        <div className={styles.infoBox}>
+          <h2 className={styles.infoTitle}>Beschikbare Fietsen</h2>
+          <p className={styles.infoCount}>{station.free_bikes}</p>
+        </div>
+        <div className={styles.infoBox}>
+          <h2 className={styles.infoTitle}>Fietsen Weg</h2>
+          <p className={styles.infoCount}>{station.empty_slots}</p>
+        </div>
+      </div>
+      <div className={styles.routeContainer}>
+        <Link href={`https://www.google.com/maps/dir/?api=1&destination=${station.latitude},${station.longitude}`} passHref className={styles.routeLink}>
+          Ga
+        </Link>
+      </div>
     </div>
   );
 }
