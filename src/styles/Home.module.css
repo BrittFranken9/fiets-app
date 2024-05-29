@@ -8,14 +8,15 @@
   .container {
     display: flex;
     flex-wrap: nowrap;
-    gap: 20px;
+    gap: 0px;
     overflow-x: auto;
   }
   
   .stationContainer {
-    flex: 0 0 auto; /* Ensures the flex items don't shrink */
+    flex: 0 0 auto;
     width: 35vw;
     height: 25vh;
+    margin-left: 20px;
     background-color: white;
     border-radius: 20px;
     position: relative;
