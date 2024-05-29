@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styles from '@/styles/zoeken.module.css';
 import Image from 'next/image';
 
+
 export default function Home() {
     const [filter, setFilter] = useState('');
     const { network, isLoading, isError } = useNetwork();
@@ -28,6 +29,10 @@ export default function Home() {
         setFilter(e.target.value);
     }
 
+    const popularStations = network.stations.slice(0, 8);
+
+    const showSuggestions = filter === '';
+
     const filteredStations = filter
         ? network.stations
             .filter(station => station.name.toLowerCase().includes(filter.toLowerCase()))
@@ -49,25 +54,53 @@ export default function Home() {
                     />
                 </div>
             </div>
-            <div className={styles.resultsContainer}>
-                <div className={styles.results}>
-                    {filteredStations.map(station => (
-                        <div key={station.id} className={styles.stationContainer}>
-                            <Link 
-                                className={styles.customLink} 
-                                href={`/stations/${station.id}`} 
-                            >
-                                <div className={styles.stationInfo}>
-                                    <span>{removeLeadingDigits(station.name)}</span>
-                                    <span className={`${styles.freeBikes} ${styles.alignRight}`}>
-                                        {station.free_bikes}
-                                    </span>
-                                </div>
-                            </Link>
+            {showSuggestions && (
+                <div className={styles.resultsContainer}>
+                    <div className={styles.results}>
+                        <div className={styles.stationContainer}>
+                            <div className={styles.stationInfo}>
+                                <span className={styles.suggesties}>Suggesties</span>
+                            </div>
                         </div>
-                    ))}
+                        {popularStations.map(station => (
+                            <div key={station.id} className={styles.stationContainer}>
+                                <Link 
+                                    className={styles.customLink} 
+                                    href={`/stations/${station.id}`} 
+                                >
+                                    <div className={styles.stationInfo}>
+                                        <span>{removeLeadingDigits(station.name)}</span>
+                                        <span className={`${styles.freeBikes} ${styles.alignRight}`}>
+                                            {station.free_bikes}
+                                        </span>
+                                    </div>
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            )}
+            {!showSuggestions && (
+                <div className={styles.resultsContainer}>
+                    <div className={styles.results}>
+                        {filteredStations.map(station => (
+                            <div key={station.id} className={styles.stationContainer}>
+                                <Link 
+                                    className={styles.customLink} 
+                                    href={`/stations/${station.id}`} 
+                                >
+                                    <div className={styles.stationInfo}>
+                                        <span>{removeLeadingDigits(station.name)}</span>
+                                        <span className={`${styles.freeBikes} ${styles.alignRight}`}>
+                                            {station.free_bikes}
+                                        </span>
+                                    </div>
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
