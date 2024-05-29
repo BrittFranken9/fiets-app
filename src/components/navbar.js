@@ -23,13 +23,11 @@ export default function Navbar() {
         <nav className={`${styles.navbar} ${!visible ? styles.hidden : ''}`}>
             <div className={styles.logo}>
                 <Link href="/home">
-                    <Image src="/fiets.svg" alt="Logo" width={50} height={50} />
+                    <Image src="/fiets.svg" alt="Logo" width={40} height={40} />
                 </Link>
             </div>
-            <div className={styles.extraLink}>
-                <Link href="/zoeken">
-                    <Image src="/zoek.png" alt="Extra Link Photo" width={23} height={21} />
-                </Link>
+            <div className={styles.veloAntwerpen}>
+                <Image src="/Velo-Antwerpen-01.svg" alt="Velo Antwerpen" width={200} height={80} />
             </div>
         </nav>
     );

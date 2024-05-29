@@ -24,22 +24,22 @@ export default function Home() {
         return name.replace(/^\d+\s*-\s*/, '');
     }
 
-    const filteredStations = filter
-        ? network.stations
-            .filter(station => station.name.toLowerCase().includes(filter.toLowerCase()))
-            .sort((a, b) => getRelevance(a, filter) - getRelevance(b, filter))
-            .slice(0, 5)
-        : [];
-
     function handleFilterChange(e) {
         setFilter(e.target.value);
     }
 
+    const filteredStations = filter
+        ? network.stations
+            .filter(station => station.name.toLowerCase().includes(filter.toLowerCase()))
+            .sort((a, b) => getRelevance(a, filter) - getRelevance(b, filter))
+            .slice(0, 10)
+        : [];
+
     return (
         <div className={styles.container}>
-            <div className={styles.header}>
-                <h1 className={styles.hoofd}>Zoek hier uw station</h1>
-                <div className={styles.inputContainer}>
+            <div className={styles.inputContainer}>
+                <div className={styles.searchBox}>
+                    <Image src="/search.svg" alt="Search Icon" className={styles.searchIcon} width={40} height={40}/>
                     <input 
                         type="text" 
                         value={filter} 

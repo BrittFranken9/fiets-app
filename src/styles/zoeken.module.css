@@ -1,72 +1,60 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 20px;
-    min-height: 50vh;
-}
-
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    margin-bottom: 50px;
-}
-
-.hoofd {
-    font-size: var(--header-font-size);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: normal;
-    color: rgb(255, 255, 255);
-    margin-bottom: 10px;
+    padding: 10px 0px;
+    z-index: 1000;
 }
 
 .inputContainer {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
+    padding: 10px 20px;
+}
+
+.searchBox {
+    position: relative;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 20px; /* Aanpassen zoals nodig */
+    height: 20px; /* Aanpassen zoals nodig */
+    opacity: 0.7; /* Opacity aanpassen als gewenst */
 }
 
 .inputField {
-    padding: 10px;
+    padding: 10px 40px 10px 40px;
     font-size: 16px;
     width: 100%;
-    max-width: 800px; /* Adjust this value as needed */
-    background-color: rgba(255, 255, 255, 0); /* Transparent background */
-    border: 1px solid #ffffff;
-    border-radius: 50px;
-    color: white; /* White text color */
+    max-width: 250px;
+    border-radius: 5px;
+    color: #eeeeee;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: #fd7014 2px solid;
 }
 
 .resultsContainer {
     width: 100%;
     max-width: 800px;
-    background-color: white;
-    border-radius: 5px;
-    margin-top: 0px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.results {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    margin-top: 50px; /* Extra ruimte bovenaan */
 }
 
 .stationContainer {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    padding: 15px; /* Grotere padding voor de resultaten */
+    border-bottom: 1px solid #dbdbdb; /* Grijze onderstreping */
 }
 
 .stationContainer:last-child {
-    border-bottom: none;
+    border-bottom: none; /* Geen onderstreping voor het laatste resultaat */
 }
 
 .customLink {
     display: block;
-    color: #1d1d1d;
+    color: #eeeeee; /* Donkere tekstkleur */
     text-decoration: none;
     font-size: 16px;
 }
@@ -78,10 +66,10 @@
 .stationInfo {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    align-items: center;
 }
 
 .freeBikes {
-    margin-left: 20px;
-    text-align: right;
+    font-weight: bold; /* Vetgedrukte tekst voor vrije fietsen */
+    color: #fd7014; /* Donkere tekstkleur */
 }

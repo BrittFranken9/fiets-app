@@ -1,6 +1,7 @@
+
 import { useState, useEffect, useRef } from 'react';
-import styles from '@/styles/Home.module.css';
 import useNetwork from '@/data/network';
+import styles from '@/styles/Home.module.css';
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
 import TileLayer from 'ol/layer/Tile.js';
@@ -21,6 +22,12 @@ export default function Home() {
   const router = useRouter();
 
   const [favorites, setFavorites] = useState({});
+
+  useEffect(() => {
+    // Retrieve favorites from local storage when component mounts
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || {};
+    setFavorites(storedFavorites);
+  }, []);
 
   useEffect(() => {
     if (!isLoading && !isError && network && network.stations) {
@@ -76,10 +83,11 @@ export default function Home() {
   }, [network, isLoading, isError, favorites]);
 
   const toggleFavorite = (id) => {
-    setFavorites((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
+    setFavorites((prev) => {
+      const updatedFavorites = { ...prev, [id]: !prev[id] };
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      return updatedFavorites;
+    });
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -127,79 +135,6 @@ export default function Home() {
           {/* Add your extra info content here */}
           <p>Extra Info Box 1</p>
         </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 2</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 3</p>
-        </div>
-        
       </div>
     </div>
   );
