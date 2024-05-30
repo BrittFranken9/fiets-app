@@ -22,7 +22,7 @@ export default function Navbar() {
     return (
         <nav className={`${styles.navbar} ${!visible ? styles.hidden : ''}`}>
             <div className={styles.logo}>
-                <Link href="/Maps/home">
+                <Link href="/Creatief/home">
                     <Image src="/fiets.svg" alt="Logo" width={40} height={40} />
                 </Link>
             </div>
