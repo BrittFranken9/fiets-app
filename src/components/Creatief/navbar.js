@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '@/styles/Navbar.module.css';
+import styles from '@/styles/Creatief/Navbar.module.css';
 
 export default function Navbar() {
     const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -22,7 +22,7 @@ export default function Navbar() {
     return (
         <nav className={`${styles.navbar} ${!visible ? styles.hidden : ''}`}>
             <div className={styles.logo}>
-                <Link href="/home">
+                <Link href="/Creatief/home">
                     <Image src="/fiets.svg" alt="Logo" width={40} height={40} />
                 </Link>
             </div>

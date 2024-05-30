@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import useNetwork from '@/data/network';
-import styles from '@/styles/favorites.module.css';
+import styles from '@/styles/Maps/favorites.module.css';
 import Link from 'next/link';
 
 export default function About() {

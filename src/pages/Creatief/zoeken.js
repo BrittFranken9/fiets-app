@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import useNetwork from '@/data/network';
 import Link from 'next/link';
-import styles from '@/styles/zoeken.module.css';
+import styles from '@/styles/Creatief/zoeken.module.css';
 import Image from 'next/image';
 
 

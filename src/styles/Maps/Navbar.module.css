@@ -1,0 +1,30 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 1000;
+    background-color: #222831;
+}
+
+
+.extraLink {
+    margin-right: 40px;
+    margin-top: 2px;
+}
+
+.logo, .veloAntwerpen {
+    display: flex;
+    align-items: center;
+}
+
+.veloAntwerpen img {
+    height: 28px;
+    margin-left: 10px;
+    align-items: center;
+    justify-content: center;
+}

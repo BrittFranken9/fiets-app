@@ -1,4 +1,4 @@
-import Footer from './Maps/footer';
+import Footer from './Creatief/footer';
 import styles from '@/styles/Layout.module.css';
 
 export default function Layout2({ children }) {

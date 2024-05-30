@@ -1,0 +1,86 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0px;
+    z-index: 1000;
+    border-bottom: none;
+}
+
+.inputContainer {
+    padding: 10px 20px;
+}
+
+.searchBox {
+    position: relative;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+}
+
+.inputField {
+    padding: 10px 40px 10px 40px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 240px;
+    border-radius: 5px;
+    color: #eeeeee;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: #fd7014 2px solid;
+}
+
+.resultsContainer {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 50px;
+}
+
+.stationContainer {
+    padding: 15px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.stationContainer:last-child {
+    border-bottom: none;
+}
+
+.customLink {
+    display: block;
+    color: #eeeeee;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.customLink:hover {
+    text-decoration: underline;
+}
+
+.stationInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.freeBikes {
+    font-weight: bold;
+    color: #fd7014;
+}
+
+.suggesties {
+    color: #eeeeee;
+    font-family: 'verdana';
+    font-weight: lighter;
+    font-size: 20px;
+    margin-top: -30px;
+    margin-bottom: 30px;
+    text-align: left;
+  }

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '@/styles/index.module.css';
+import styles from '@/styles/keuzes.module.css';
 import Image from 'next/image';
 
 export default function Index() {
@@ -14,10 +14,13 @@ export default function Index() {
                     <Image src="/Velo-Antwerpen-01.svg" alt="Logo" width={300} height={40} className={styles.logo} />
                 </div>
 
-                <p className={styles.text}>Laat je meevoeren door de bruisende energie van Antwerpen terwijl je op de pedalen van een Velo-fiets trapt.</p>
+                <p className={styles.text}>Kies hoe u uw fiets wilt gaan vinden in Antwerpen.</p>
 
-                <Link href="/keuzes">
-                    <button className={styles.homeButton}>Find your bike</button>
+                <Link href="/Maps/home">
+                    <button className={styles.homeButton}>Maps</button>
+                </Link>
+                <Link href="/Creatief/home">
+                    <button className={styles.homeButton}>Creatief</button>
                 </Link>
             </div>
         </div>

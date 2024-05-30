@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import useNetwork from '@/data/network';
-import styles from '@/styles/Home.module.css';
+import styles from '@/styles/Maps/Home.module.css';
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
 import TileLayer from 'ol/layer/Tile.js';
