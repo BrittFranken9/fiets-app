@@ -1,5 +1,98 @@
-.map {
-    width: 100%;
-    height: 100vh;
-    margin-top: -150px;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  list-style: none;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.titel, .whiteTitle {
+  color: #eeeeee;
+  font-family: 'verdana';
+  font-weight: lighter;
+  font-size: 20px;
+  margin-top: -30px;
+  margin-left: 24px;
+  margin-bottom: 24px;
+}
+
+.stationList {
+  list-style: none;
+  padding: 0;
+  padding-bottom: 10vh;
+}
+
+.stationItem {
+  background-color: #eeeeee;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 24px;
+  margin-right: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.stationInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.stationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stationName {
+  margin: 0;
+  font-size: 18px;
+  font-family: 'verdana';
+  font-weight: normal;
+  color: #222831;
+  text-decoration: none;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: #fd7014;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.stationDetails {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-family: 'verdana';
+  font-weight: lighter;
+  font-size: 11px;
+  color: #393e46;
+}
+
+.distanceLine {
+  position: relative;
+  margin-top: 8px;
+}
+
+.distanceDot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #fd7014;
+  border-radius: 50%;
+  bottom: -5px;
+  left: 0;
+}
+
+.distanceLineInner {
+  position: absolute;
+  background-color: #fd7014;
+  bottom: -2px;
+  left: 10px;
+  height: 2px;
+}
