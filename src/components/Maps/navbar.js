@@ -29,6 +29,11 @@ export default function Navbar() {
             <div className={styles.veloAntwerpen}>
                 <Image src="/Velo-Antwerpen-01.svg" alt="Velo Antwerpen" width={200} height={80} />
             </div>
+            <div className={styles.rightLink}>
+                <Link href="/Creatief/home">
+                    <Image src="/Switch.svg" alt="Another Icon" width={30} height={20} />
+                </Link>
+            </div>
         </nav>
     );
 }
