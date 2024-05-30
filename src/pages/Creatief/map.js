@@ -60,7 +60,7 @@ export default function About() {
           });
 
           stationsWithDistances.sort((a, b) => a.distance - b.distance);
-          setStations(stationsWithDistances);
+          setStations(stationsWithDistances.slice(0, 5)); // Selecteer de eerste 5 stations
         })
         .catch((error) => {
           console.error('Error fetching station data:', error);
@@ -74,12 +74,12 @@ export default function About() {
       <ul className={styles.stationList}>
         {stations.map((station) => (
           <li key={station.id} className={styles.stationItem}>
-            <span>{station.name}</span>
+            <span>{station.name.replace(/^\d+\s*-\s*/, '')}</span>
             <div className={styles.distanceLine}>
               <div className={styles.distanceDot}></div>
-              <div className={styles.distanceLineInner} style={{ width: `${(station.distance / 30 * 100).toFixed(2)}%` }}></div>
+              <div className={styles.distanceLineInner} style={{ width: `${(station.distance / 18 * 100).toFixed(2)}%` }}></div>
             </div>
-            <p>Afstand: {station.distance.toFixed(2)} km</p>
+            <p className={styles.stationDetails}>Afstand: {station.distance.toFixed(2)} km</p>
           </li>
         ))}
       </ul>
