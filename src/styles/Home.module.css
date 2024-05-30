@@ -16,7 +16,7 @@
     flex: 0 0 auto;
     width: 35vw;
     height: 25vh;
-    margin-left: 20px;
+    margin-left: 24px;
     background-color: white;
     border-radius: 20px;
     position: relative;
@@ -86,11 +86,12 @@
   }
   
   .title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2em;
-    font-weight: bold;
+    margin: 0;
+    font-size: 18px;
+    font-family: 'verdana';
+    font-weight: normal;
     color: #222831;
-    margin-bottom: 10px;
+    text-decoration: none;
   }
   
   .extraInfo {
@@ -99,9 +100,16 @@
     gap: 20px;
   }
   
-  .infoBox {
-    background-color: #ffffff;
+  .extraInfoContainer {
+    margin-top: 32px;
+    background-color: #eeeeee;
+    margin-left: 24px;
+    margin-right: 24px;
     padding: 20px;
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .overallContainer {
+    margin-bottom: 20vh;
   }

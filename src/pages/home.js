@@ -107,6 +107,10 @@ export default function Home() {
     return name.replace(/^\d+\s*-\s*/, '');
   };
 
+  const totalAvailableBikes = network.stations.reduce((sum, station) => sum + station.free_bikes, 0);
+  const totalEmptySlots = network.stations.reduce((sum, station) => sum + station.empty_slots, 0);
+  const totalBikes = totalAvailableBikes + totalEmptySlots;
+
   return (
     <div>
       <div className={styles.container}>
@@ -141,13 +145,21 @@ export default function Home() {
           </div>
         ))}
       </div>
+      <div classname={styles.overallContainer}>
       <div className={styles.extraInfoContainer}>
-        <h2 className={styles.title}>Extra Information</h2>
+        <h2 className={styles.title}>Totaal aantal fietsen</h2>
         <div className={styles.extraInfoBox}>
-          {/* Add your extra info content here */}
-          <p>Extra Info Box 1</p>
+          <p>Totaal aantal fietsen beschikbaar: {totalAvailableBikes}</p>
+          <p>Totaal aantal lege plekken: {totalEmptySlots}</p>
         </div>
       </div>
+      <div className={styles.extraInfoContainer}>
+        <h2 className={styles.title}>Totaal aantal fietsen bij Velo Antwerpen</h2>
+        <div className={styles.extraInfoBox}>
+          <p>Totaal aantal fietsen: {totalBikes}</p>
+        </div>
+      </div>
+    </div>
     </div>
   );
 }
