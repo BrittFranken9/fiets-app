@@ -145,18 +145,28 @@ export default function Home() {
           </div>
         ))}
       </div>
-      <div classname={styles.overallContainer}>
-      <div className={styles.extraInfoContainer}>
-        <h2 className={styles.title}>Totaal aantal fietsen</h2>
-        <div className={styles.extraInfoBox}>
-          <p>Totaal aantal fietsen beschikbaar: {totalAvailableBikes}</p>
-          <p>Totaal aantal lege plekken: {totalEmptySlots}</p>
+
+      <div>
+      <div>
+        <h1 className={styles.whiteTitle}>Leuke weetjes</h1>
+        <div className={styles.extraInfoContainer}>
+          <h2 className={styles.title}>Totalen</h2>
+          <div className={styles.extraInfoBox}>
+            <span>Beschikbare fietsen: {totalAvailableBikes}</span>
+            <span>Lege plaatsen: {totalEmptySlots}</span>
+          </div>
         </div>
-      </div>
-      <div className={styles.extraInfoContainer}>
-        <h2 className={styles.title}>Totaal aantal fietsen bij Velo Antwerpen</h2>
-        <div className={styles.extraInfoBox}>
-          <p>Totaal aantal fietsen: {totalBikes}</p>
+        <div className={styles.extraInfoContainer}>
+          <h2 className={styles.title}>Fietsen in totaal</h2>
+          <div className={styles.extraInfoBox}>
+            <span>Totaal aantal fietsen: {totalBikes}</span>
+          </div>
+        </div>
+        <div className={styles.extraInfoContainer}>
+          <h2 className={styles.title}>Totaal aantal stations</h2>
+          <div className={styles.extraInfoBox}>
+            <span>Totaal aantal locaties: {network.stations.length}</span>
+          </div>
         </div>
       </div>
     </div>
