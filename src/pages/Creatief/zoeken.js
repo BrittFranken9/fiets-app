@@ -66,7 +66,7 @@ export default function Home() {
                             <div key={station.id} className={styles.stationContainer}>
                                 <Link 
                                     className={styles.customLink} 
-                                    href={`/stations/${station.id}`} 
+                                    href={`/station2/${station.id}`} 
                                 >
                                     <div className={styles.stationInfo}>
                                         <span>{removeLeadingDigits(station.name)}</span>
@@ -87,7 +87,7 @@ export default function Home() {
                             <div key={station.id} className={styles.stationContainer}>
                                 <Link 
                                     className={styles.customLink} 
-                                    href={`/stations/${station.id}`} 
+                                    href={`/station2/${station.id}`} 
                                 >
                                     <div className={styles.stationInfo}>
                                         <span>{removeLeadingDigits(station.name)}</span>

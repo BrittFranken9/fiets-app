@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import useNetwork from '@/data/network';
-import styles from '@/styles/Maps/StationId.module.css';
+import styles from '@/styles/Creatief/StationId.module.css';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';

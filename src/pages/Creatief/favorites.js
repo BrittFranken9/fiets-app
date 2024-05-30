@@ -32,7 +32,7 @@ export default function About() {
           <li key={station.id} className={styles.stationItem}>
             <div className={styles.stationInfo}>
               <div className={styles.stationHeader}>
-                <Link href={`/stations/${station.id}`} className={styles.stationName}>
+                <Link href={`/station2/${station.id}`} className={styles.stationName}>
                   {station.name.replace(/^\d+\s*-\s*/, '')}
                 </Link>
                 <div className={styles.removeButton} onClick={() => removeFavorite(station.id)}>✖</div>
