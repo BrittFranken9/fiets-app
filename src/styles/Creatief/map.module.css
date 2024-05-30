@@ -17,7 +17,9 @@
 
 .stationItem {
   background-color: #eeeeee;
-  padding: 16px;
+  padding-top: 14px;
+  padding-bottom: 10px;
+  padding-left: 14px;
   margin-bottom: 14px;
   border-radius: 8px;
   display: flex;
@@ -27,6 +29,14 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.stationName {
+  margin: 0;
+  font-size: 18px;
+  font-family: 'verdana';
+  font-weight: normal;
+  color: #222831;
+  text-decoration: none;
+}
 
 .stationHeader {
   display: flex;

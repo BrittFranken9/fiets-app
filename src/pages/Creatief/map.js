@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import useNetwork from '@/data/network';
 import styles from '@/styles/Creatief/map.module.css';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function About() {
@@ -43,12 +44,10 @@ export default function About() {
 
   useEffect(() => {
     if (userLocation) {
-
       fetch('https://api.citybik.es/v2/networks/velo-antwerpen')
         .then((response) => response.json())
         .then((data) => {
           const stationsData = data.network.stations;
-
           const stationsWithDistances = stationsData.map((station) => {
             const distance = calculateDistance(
               userLocation.lat,
@@ -58,7 +57,6 @@ export default function About() {
             );
             return { ...station, distance };
           });
-
           stationsWithDistances.sort((a, b) => a.distance - b.distance);
           setStations(stationsWithDistances.slice(0, 5)); // Selecteer de eerste 5 stations
         })
@@ -74,7 +72,9 @@ export default function About() {
       <ul className={styles.stationList}>
         {stations.map((station) => (
           <li key={station.id} className={styles.stationItem}>
-            <span>{station.name.replace(/^\d+\s*-\s*/, '')}</span>
+            <Link href={`/station2/${station.id}`} className={styles.stationName}>
+              {station.name.replace(/^\d+\s*-\s*/, '')}
+            </Link>
             <div className={styles.distanceLine}>
               <div className={styles.distanceDot}></div>
               <div className={styles.distanceLineInner} style={{ width: `${(station.distance / 18 * 100).toFixed(2)}%` }}></div>

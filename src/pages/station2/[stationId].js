@@ -1,82 +1,41 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useNetwork from '@/data/network';
 import styles from '@/styles/Creatief/StationId.module.css';
-import Map from 'ol/Map';
-import View from 'ol/View';
-import TileLayer from 'ol/layer/Tile';
-import OSM from 'ol/source/OSM';
-import Feature from 'ol/Feature';
-import Point from 'ol/geom/Point';
-import { fromLonLat } from 'ol/proj';
-import { Vector as VectorLayer } from 'ol/layer';
-import { Vector as VectorSource } from 'ol/source';
-import { Style, Icon } from 'ol/style';
-import 'ol/ol.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function StationDetail() {
   const { network, isLoading, isError } = useNetwork();
   const router = useRouter();
-  const mapRef = useRef();
   const markerRef = useRef(null);
+  const [userLocation, setUserLocation] = useState(null);
 
   useEffect(() => {
-    if (!isLoading && !isError && network && network.stations && network.stations.length > 0) {
-      const station = network.stations.find(station => station.id === router.query.stationId);
-      if (!station) return;
-
-      const map = new Map({
-        view: new View({
-          center: fromLonLat([station.longitude, station.latitude]),
-          zoom: 12,
-        }),
-        layers: [
-          new TileLayer({
-            source: new OSM(),
-          }),
-        ],
-        target: mapRef.current,
-        controls: [],
-      });
-
-      const marker = new Feature({
-        geometry: new Point(fromLonLat([station.longitude, station.latitude])),
-      });
-
-      marker.setStyle(
-        new Style({
-          image: new Icon({
-            src: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%23fd7014" /></svg>',
-            imgSize: [24, 24],
-            anchor: [0.5, 1],
-            anchorXUnits: 'fraction',
-            anchorYUnits: 'fraction',
-          }),
-        })
-      );
-
-      const vectorLayer = new VectorLayer({
-        source: new VectorSource({
-          features: [marker],
-        }),
-      });
-
-      map.addLayer(vectorLayer);
-
-      markerRef.current = marker;
-
-      return () => {
-        map.setTarget(null);
-        markerRef.current = null;
-      };
-    }
+    // Fetching network data and setting up marker
   }, [network, isLoading, isError, router.query.stationId]);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation({
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.error('Geolocation error:', error);
+        }
+      );
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+    }
+  }, []);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error</div>;
 
-  if (!router.query.stationId || !network) return <div>No station ID or network data</div>;
+  if (!router.query.stationId || !network || !userLocation) return <div>No station ID, network data, or user location</div>;
 
   const station = network.stations.find(station => station.id === router.query.stationId);
   if (!station) return <div>Station not found</div>;
@@ -85,26 +44,55 @@ export default function StationDetail() {
     return name.replace(/^\d+\s*-\s*/, '');
   }
 
+  function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the earth in km
+    const dLat = deg2rad(lat2 - lat1);  // deg2rad below
+    const dLon = deg2rad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2)
+      ;
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // Distance in km
+    return distance;
+  }
+
+  function deg2rad(deg) {
+    return deg * (Math.PI / 180);
+  }
+
+  const distanceToStation = calculateDistance(userLocation.lat, userLocation.lon, station.latitude, station.longitude);
+
   return (
-    <div className={styles.stationDetail}>
-      <h1 className={styles.hoofd}>{removeLeadingDigits(station.name)}</h1>
-      <div className={styles['map-container']}>
-        <div ref={mapRef} className={styles.map}></div>
-      </div>
-      <div className={styles.infoContainer}>
-        <div className={styles.infoBox}>
-          <h2 className={styles.infoTitle}>Beschikbare Fietsen</h2>
-          <p className={styles.infoCount}>{station.free_bikes}</p>
-        </div>
-        <div className={styles.infoBox}>
-          <h2 className={styles.infoTitle}>Fietsen Weg</h2>
-          <p className={styles.infoCount}>{station.empty_slots}</p>
+    <div>
+      
+      <span className={styles.titel}>{station.name.replace(/^\d+\s*-\s*/, '')}</span>
+      <div className={styles.stationItem}>
+        <div className={styles.distanceLine}>
+          <div className={styles.distanceDot}></div>
+          <div className={styles.distanceLineInner} style={{ width: `${(distanceToStation / 18 * 100).toFixed(2)}%` }}></div>
         </div>
       </div>
-      <div className={styles.routeContainer}>
-        <Link href={`https://www.google.com/maps/dir/?api=1&destination=${station.latitude},${station.longitude}`} passHref className={styles.routeLink}>
-          Ga
-        </Link>
+      <div className={styles.stationItem2}>
+        <p >Afstand tot station: {distanceToStation.toFixed(2)} km</p>
+      </div>
+      <div className={styles.stationDetail}>
+        <div className={styles.infoContainer}>
+          <div className={styles.infoBox}>
+            <h2 className={styles.infoTitle}>Beschikbare Fietsen</h2>
+            <p className={styles.infoCount}>{station.free_bikes}</p>
+          </div>
+          <div className={styles.infoBox}>
+            <h2 className={styles.infoTitle}>Fietsen Weg</h2>
+            <p className={styles.infoCount}>{station.empty_slots}</p>
+          </div>
+        </div>
+        <div className={styles.routeContainer}>
+          <Link href={`https://www.google.com/maps/dir/?api=1&destination=${station.latitude},${station.longitude}`} passHref className={styles.routeLink}>
+            Ga
+          </Link>
+        </div>
       </div>
     </div>
   );

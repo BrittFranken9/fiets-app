@@ -1,25 +1,43 @@
-
-.stationDetail {
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .distanceLine {
+    position: relative;
+    margin-top: 20px;
+  }
+  
+  .distanceDot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #fd7014;
+    border-radius: 50%;
+    bottom: 5px;
+    left: 0;
+  }
+  
+  .distanceLineInner {
+    position: absolute;
+    background-color: #fd7014;
+    bottom: 8px;
+    left: 10px;
+    width: 100%;
+    height: 2px;
+  }
+  
+  .stationDetail {
     margin-left: 24px;
     margin-right: 24px;
     padding-bottom: 10vh;
-}
-
-.map-container {
-    width: 100%;
-    height: 40vh;
-    margin-top: 10px;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.map {
-    width: 100%;
-    height: 100%;
-}
-
-.hoofd {
-    color: #eeeeee;
+  }
+  
+  .hoofd {
+    color: #222831;
     font-family: 'verdana';
     font-weight: lighter;
     font-size: 20px;
@@ -27,42 +45,42 @@
     margin-bottom: 30px;
     text-align: left;
   }
-
+  
   .infoContainer {
     display: flex;
     gap: 24px;
     margin-top: 20px;
-}
-
-.infoBox {
+  }
+  
+  .infoBox {
     width: 50%;
     padding: 8px;
     border-radius: 10px;
     background-color: #eeeeee;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-}
-
-.infoTitle {
+  }
+  
+  .infoTitle {
     font-family: 'verdana';
     font-weight: lighter;
     font-size: 12px;
     margin-bottom: 10px;
-}
-
-.infoCount {
+  }
+  
+  .infoCount {
     font-size: 24px;
     font-family: 'verdana';
     font-weight: normal;
     color: #fd7014;
-}
-
-.infoText {
+  }
+  
+  .infoText {
     font-size: 16px;
     color: #222831;
-}
-
-.routeContainer {
+  }
+  
+  .routeContainer {
     width: 90%;
     background-color: #fd7014;
     padding: 16px;
@@ -71,7 +89,7 @@
   }
   
   .routeLink {
-    color: #ffffff;
+    color: #eeeeee;
     font-family: 'verdana';
     font-weight: normal;
     font-size: 16px;
@@ -83,4 +101,48 @@
   
   .routeLink:hover {
     text-decoration: underline;
+  }
+
+  
+.titel {
+    color: #eeeeee;
+    font-family: 'verdana';
+    font-weight: lighter;
+    font-size: 20px;
+    margin-top: -30px;
+    margin-left: 24px;
+    margin-bottom: 24px;
+  }
+
+  .stationItem {
+    background-color: #eeeeee;
+    padding: 16px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 24px;
+    margin-right: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 40px;
+  }
+
+  .stationItem2 {
+    background-color: #eeeeee;
+    padding: 16px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 24px;
+    margin-right: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .routeText {
+    color: #ffffff;
+    font-family: 'verdana';
+    font-weight: normal;
+    font-size: 16px;
+    text-align: center;
   }
