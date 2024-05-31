@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import useNetwork from '@/data/network';
 import styles from '@/styles/Creatief/favorites.module.css';
 import Link from 'next/link';
+import ReactLoading from 'react-loading';
 
 export default function About() {
   const { network, isLoading, isError } = useNetwork();
@@ -19,7 +20,13 @@ export default function About() {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+        <div className={styles.loadingContainer}>
+            <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
+        </div>
+    );
+}
   if (isError) return <div>Error</div>;
 
   const favoriteStations = network.stations.filter((station) => favorites[station.id]);

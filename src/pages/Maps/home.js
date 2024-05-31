@@ -15,6 +15,7 @@ import Image from 'next/image';
 import 'ol/ol.css';
 import { useRouter } from 'next/router';
 import { defaults as defaultInteractions, DragPan, MouseWheelZoom } from 'ol/interaction';
+import ReactLoading from 'react-loading';
 
 export default function Home() {
   const { network, isLoading, isError } = useNetwork();
@@ -100,7 +101,13 @@ export default function Home() {
     });
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+        <div className={styles.loadingContainer}>
+            <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
+        </div>
+    );
+}
   if (isError) return <div>Error</div>;
 
   const formatStationName = (name) => {

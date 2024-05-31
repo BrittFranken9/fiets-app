@@ -14,6 +14,7 @@ import { Style, Icon } from 'ol/style';
 import 'ol/ol.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import ReactLoading from 'react-loading';
 
 export default function About() {
   const { network, isLoading, isError } = useNetwork();
@@ -79,7 +80,13 @@ export default function About() {
  
   }, [network, isLoading, isError, router]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+        <div className={styles.loadingContainer}>
+            <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
+        </div>
+    );
+}
   if (isError) return <div>Error</div>;
 
   return (

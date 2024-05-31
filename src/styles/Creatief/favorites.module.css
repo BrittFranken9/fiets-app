@@ -64,3 +64,10 @@
     font-size: 11px;
     color: #393e46;
   }
+
+  .loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

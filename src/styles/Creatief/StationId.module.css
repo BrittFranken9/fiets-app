@@ -146,3 +146,10 @@
     font-size: 16px;
     text-align: center;
   }
+
+  .loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

@@ -87,3 +87,10 @@
   color: #393e46;
   margin-top: 30px;
 }
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

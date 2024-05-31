@@ -19,6 +19,7 @@
     "ol": "^9.2.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-loading": "^2.0.3",
     "react-map-gl": "^7.1.7",
     "swr": "^2.2.5"
   },

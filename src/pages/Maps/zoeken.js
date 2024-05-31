@@ -3,13 +3,20 @@ import useNetwork from '@/data/network';
 import Link from 'next/link';
 import styles from '@/styles/Maps/zoeken.module.css';
 import Image from 'next/image';
+import ReactLoading from 'react-loading';
 
 
 export default function Home() {
     const [filter, setFilter] = useState('');
     const { network, isLoading, isError } = useNetwork();
 
-    if (isLoading) return <div>loading ...</div>;
+    if (isLoading) {
+        return (
+            <div className={styles.loadingContainer}>
+                <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
+            </div>
+        );
+    }
     if (isError) return <div>error</div>;
 
     function getRelevance(station, filter) {

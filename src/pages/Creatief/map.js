@@ -3,6 +3,8 @@ import useNetwork from '@/data/network';
 import styles from '@/styles/Creatief/map.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import ReactLoading from 'react-loading';
+
 
 export default function About() {
   const [userLocation, setUserLocation] = useState(null);
@@ -65,6 +67,15 @@ export default function About() {
         });
     }
   }, [userLocation]);
+
+  if (isLoading) {
+    return (
+        <div className={styles.loadingContainer}>
+            <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
+        </div>
+    );
+}
+  if (isError) return <div>Error</div>;
 
   return (
     <div>

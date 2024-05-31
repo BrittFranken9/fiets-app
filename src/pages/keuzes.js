@@ -1,8 +1,19 @@
 import Link from 'next/link';
 import styles from '@/styles/keuzes.module.css';
 import Image from 'next/image';
+import ReactLoading from 'react-loading';
 
 export default function Index() {
+
+    if (isLoading) {
+        return (
+            <div className={styles.loadingContainer}>
+                <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
+            </div>
+        );
+    }
+    if (isError) return <div>error</div>;
+
     return (
         <div className={styles.centerContent}>
             <div className={styles.afbeeldingContainer}>

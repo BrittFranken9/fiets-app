@@ -14,6 +14,7 @@ import { Style, Icon } from 'ol/style';
 import 'ol/ol.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import ReactLoading from 'react-loading';
 
 export default function StationDetail() {
   const { network, isLoading, isError } = useNetwork();
@@ -72,11 +73,21 @@ export default function StationDetail() {
       };
     }
   }, [network, isLoading, isError, router.query.stationId]);
-
-  if (isLoading) return <div>Loading...</div>;
+ 
+  if (isLoading) {
+    return (
+        <div className={styles.loadingContainer}>
+            <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
+        </div>
+    );
+}
   if (isError) return <div>Error</div>;
 
-  if (!router.query.stationId || !network) return <div>No station ID or network data</div>;
+  if (!router.query.stationId || !network)  return (
+    <div className={styles.loadingContainer}>
+        <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
+    </div>
+);
 
   const station = network.stations.find(station => station.id === router.query.stationId);
   if (!station) return <div>Station not found</div>;
