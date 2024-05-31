@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
-import useNetwork from '@/data/network';
 import styles from '@/styles/Creatief/map.module.css';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import ReactLoading from 'react-loading';
-
 
 export default function About() {
   const [userLocation, setUserLocation] = useState(null);
   const [stations, setStations] = useState([]);
-  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const calculateDistance = (lat1, lon1, lat2, lon2) => {
     const R = 6371;
@@ -37,10 +35,14 @@ export default function About() {
         },
         (error) => {
           console.error('Geolocation error:', error);
+          setIsError(true);
+          setIsLoading(false);
         }
       );
     } else {
       console.error('Geolocation is not supported by this browser.');
+      setIsError(true);
+      setIsLoading(false);
     }
   }, []);
 
@@ -61,20 +63,24 @@ export default function About() {
           });
           stationsWithDistances.sort((a, b) => a.distance - b.distance);
           setStations(stationsWithDistances.slice(0, 5)); // Selecteer de eerste 5 stations
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error('Error fetching station data:', error);
+          setIsError(true);
+          setIsLoading(false);
         });
     }
   }, [userLocation]);
 
   if (isLoading) {
     return (
-        <div className={styles.loadingContainer}>
-            <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
-        </div>
+      <div className={styles.loadingContainer}>
+        <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
+      </div>
     );
-}
+  }
+
   if (isError) return <div>Error</div>;
 
   return (
