@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useNetwork from '@/data/network';
 import styles from '@/styles/Maps/StationId.module.css';
 import Map from 'ol/Map';
@@ -17,13 +17,23 @@ import { useRouter } from 'next/router';
 import ReactLoading from 'react-loading';
 
 export default function StationDetail() {
-  const { network, isLoading, isError } = useNetwork();
+  const { network, isLoading: networkLoading, isError } = useNetwork();
   const router = useRouter();
   const mapRef = useRef();
   const markerRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!isLoading && !isError && network && network.stations && network.stations.length > 0) {
+    // Simulate a loading delay
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(loadingTimeout);
+  }, []);
+
+  useEffect(() => {
+    if (!networkLoading && !isError && network && network.stations && network.stations.length > 0) {
       const station = network.stations.find(station => station.id === router.query.stationId);
       if (!station) return;
 
@@ -72,22 +82,25 @@ export default function StationDetail() {
         markerRef.current = null;
       };
     }
-  }, [network, isLoading, isError, router.query.stationId]);
- 
-  if (isLoading) {
+  }, [network, networkLoading, isError, router.query.stationId]);
+
+  if (isLoading || networkLoading) {
     return (
-        <div className={styles.loadingContainer}>
-            <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
-        </div>
+      <div className={styles.loadingContainer}>
+        <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
+      </div>
     );
-}
+  }
+
   if (isError) return <div>Error</div>;
 
-  if (!router.query.stationId || !network)  return (
-    <div className={styles.loadingContainer}>
+  if (!router.query.stationId || !network) {
+    return (
+      <div className={styles.loadingContainer}>
         <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
-    </div>
-);
+      </div>
+    );
+  }
 
   const station = network.stations.find(station => station.id === router.query.stationId);
   if (!station) return <div>Station not found</div>;
@@ -113,7 +126,7 @@ export default function StationDetail() {
         </div>
       </div>
       <div className={styles.routeContainer}>
-        <Link href={`https://www.google.com/maps/dir/?api=1&destination=${station.latitude},${station.longitude}`} passHref className={styles.routeLink}>
+        <Link href={`https://www.google.com/maps/dir/?api=1&destination=${station.latitude},${station.longitude}`} className={styles.routeLink}>
           Ga
         </Link>
       </div>

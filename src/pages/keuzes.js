@@ -2,8 +2,18 @@ import Link from 'next/link';
 import styles from '@/styles/keuzes.module.css';
 import Image from 'next/image';
 import ReactLoading from 'react-loading';
+import { useState, useEffect } from 'react';
 
 export default function Index() {
+
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+    }, []);
 
     if (isLoading) {
         return (
@@ -12,6 +22,7 @@ export default function Index() {
             </div>
         );
     }
+
     if (isError) return <div>error</div>;
 
     return (

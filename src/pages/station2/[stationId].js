@@ -6,14 +6,19 @@ import { useRouter } from 'next/router';
 import ReactLoading from 'react-loading';
 
 export default function StationDetail() {
-  const { network, isLoading, isError } = useNetwork();
+  const { network, isLoading: networkLoading, isError } = useNetwork();
   const router = useRouter();
   const markerRef = useRef(null);
   const [userLocation, setUserLocation] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Fetching network data and setting up marker
-  }, [network, isLoading, isError, router.query.stationId]);
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(loadingTimeout);
+  }, []);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -33,20 +38,23 @@ export default function StationDetail() {
     }
   }, []);
 
-  if (isLoading) {
+  if (isLoading || networkLoading) {
     return (
-        <div className={styles.loadingContainer}>
-            <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
-        </div>
+      <div className={styles.loadingContainer}>
+        <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
+      </div>
     );
-}
+  }
+
   if (isError) return <div>Error</div>;
 
-  if (!router.query.stationId || !network || !userLocation) return (
-    <div className={styles.loadingContainer}>
+  if (!router.query.stationId || !network || !userLocation) {
+    return (
+      <div className={styles.loadingContainer}>
         <ReactLoading type="spin" color="#fd7014" height={100} width={50} />
-    </div>
-);;
+      </div>
+    );
+  }
 
   const station = network.stations.find(station => station.id === router.query.stationId);
   if (!station) return <div>Station not found</div>;
@@ -56,16 +64,15 @@ export default function StationDetail() {
   }
 
   function calculateDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371; // Radius of the earth in km
-    const dLat = deg2rad(lat2 - lat1);  // deg2rad below
+    const R = 6371;
+    const dLat = deg2rad(lat2 - lat1);
     const dLon = deg2rad(lon2 - lon1);
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-      Math.sin(dLon / 2) * Math.sin(dLon / 2)
-      ;
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const distance = R * c; // Distance in km
+    const distance = R * c;
     return distance;
   }
 
@@ -77,8 +84,7 @@ export default function StationDetail() {
 
   return (
     <div>
-      
-      <span className={styles.titel}>{station.name.replace(/^\d+\s*-\s*/, '')}</span>
+      <span className={styles.titel}>{removeLeadingDigits(station.name)}</span>
       <div className={styles.stationItem}>
         <div className={styles.distanceLine}>
           <div className={styles.distanceDot}></div>
@@ -86,7 +92,7 @@ export default function StationDetail() {
         </div>
       </div>
       <div className={styles.stationItem2}>
-        <p >Afstand tot station: {distanceToStation.toFixed(2)} km</p>
+        <p>Afstand tot station: {distanceToStation.toFixed(2)} km</p>
       </div>
       <div className={styles.stationDetail}>
         <div className={styles.infoContainer}>
@@ -100,7 +106,7 @@ export default function StationDetail() {
           </div>
         </div>
         <div className={styles.routeContainer}>
-          <Link href={`https://www.google.com/maps/dir/?api=1&destination=${station.latitude},${station.longitude}`} passHref className={styles.routeLink}>
+          <Link href={`https://www.google.com/maps/dir/?api=1&destination=${station.latitude},${station.longitude}`} className={styles.routeLink}>
             Ga
           </Link>
         </div>
